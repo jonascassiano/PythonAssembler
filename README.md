@@ -25,7 +25,7 @@ In this case, a file named "Memoria.mif" will be created
 ## Authors
 
 * **Jonas dos Santos** - [JonasCassiano](https://github.com/jonascassiano)
-
+* **Matheus dos Anjos** - [MatanjosM](https://github.com)
 
 ## License
 
