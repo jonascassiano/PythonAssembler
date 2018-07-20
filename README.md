@@ -1,8 +1,10 @@
 # Python Assembler
 
 Converts an Assembly code to Machine code following the especificacaoMontador.pdf schematics.
+
 FEDERAL UNIVERSITY OF SÃO FRANCISCO VALLEY - UNIVASF
-DR. MAX SANTANA
+
+MAX SANTANA
 
 ## Getting Started
 
