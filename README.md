@@ -10,7 +10,7 @@ MAX SANTANA
 
 First of all, open Command Line in \Assembler folder and then type:
 
-*WITHOUT QUOTES*
+**WITHOUT QUOTES**
 
 ```
 .\Assembler "INPUT_FILE_NAME.asm" "OUTPUT_FILE_NAME.mif"
