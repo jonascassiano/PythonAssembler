@@ -16,6 +16,12 @@ First of all, open Command Line in \Assembler folder and then type:
 .\Assembler "INPUT_FILE_NAME.asm" "OUTPUT_FILE_NAME.mif"
 ```
 
+for example:
+
+```
+.\Assembler EXAMPLE.asm memoria.mif
+```
+
 Typing without output file name also works:
 
 ```

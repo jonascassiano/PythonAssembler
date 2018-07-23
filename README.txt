@@ -14,6 +14,12 @@ Primeiramente, Abra uma janela do CMD na pasta \PythonAssembler e digite:
 .\Assembler "INPUT_FILE_NAME.asm" "OUTPUT_FILE_NAME.mif"
 ```
 
+Por exemplo:
+
+```
+.\Assembler EXAMPLE.asm memoria.mif
+```
+
 Digitando sem o nome do arquivo de saida também funciona:
 
 ```
