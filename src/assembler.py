@@ -133,7 +133,10 @@ class Montador(object):
             posEnd = linhaVector[1].find(')')
             imm = linhaVector[1][0:posBegin]
             if imm != '':
-                imm = bin(int(imm,10))[2:].zfill(16)
+                if imm.find("x") == -1 :
+                    imm = bin(int(imm,10))[2:].zfill(16)
+                else: 
+                    imm = bin(int(imm,16))[2:].zfill(16)
             else:
                 imm = bin(0)[2:].zfill(16)
             rt = regBank.searchReg(linhaVector[1][posBegin+1:posEnd])
