@@ -6,6 +6,11 @@ import sys
 import os.path
 import operator
 
+from files.instructionType import *
+from files.instructionMount import *
+from files.regs import *
+from files.mnems import *
+
 class Montador(object):
     finalFile = ""
     instrucFull = []
@@ -58,12 +63,7 @@ class Montador(object):
                     else:
                         buffer += linha + "\n"  # escreve a linha no buffer
 
-                
-
-            buffer = buffer.rstrip('\n')
-                            
-                
-                         
+            buffer = buffer.rstrip('\n')          
                 
             # escreve o arquivo final em outro .asm
             outputfile = open(targetFile, "w")
@@ -109,8 +109,7 @@ class Montador(object):
         rd = bin(rd)[2:].zfill(5)
         shamt = bin(shamt)[2:].zfill(5)
         funct = bin(funct)[2:].zfill(6)
-               
-       
+
         instrucao = typeR(op, rs, rt, rd, shamt, funct)
         return instrucao
         pass
@@ -290,171 +289,7 @@ class Montador(object):
         outputfile.write(buffer)
         outputfile.close()
 
-        return instrVector	
-            #print(format(addr._address * 4 + 1, '#05X') + " " + instr1Hex)
-            #print(format(addr._address * 4 + 2, '#05X') + " " + instr2Hex)
-            #print(format(addr._address * 4 + 3, '#05X') + " " + instr3Hex)
-            #print(addr._address+ " " + instr1Hex)
-            #print(addr._address+ " " + instr2Hex)
-            #print(addr._address+ " " + instr3Hex)
-            
-class Regs(object):
-    registers = ["$zero","$at","$v0","$v1","$a0","$a1","$a2","$a3",
-                "$t0","$t1","$t2","$t3","$t4","$t5","$t6","$t7",
-                "$s0","$s1","$s2","$s3","$s4","$s5","$s6","$s7",
-                "$t8","$t9","$k0","$k1","$gp","$sp","$fp","$ra"]
-    
-    def removeChr(self, reg):
-        return reg[1:]
-
-    def searchReg(self, reg):
-        for i, elements in enumerate(self.registers):
-            if elements == reg or reg == ("$"+str(i)):
-                return i
-        
-
-class Instruc(object):
-    def __init__(self, mnem, tipo, opfunc, num): 
-        self._mnem = mnem
-        self._tipo = tipo
-        self._opfunc = opfunc
-        self._num = num
-
-class typeR(object):
-    def __init__(self, op, rs, rt, rd, shamt, funct): 
-        self._op = op
-        self._rs = rs
-        self._rt = rt
-        self._rd = rd
-        self._shamt = shamt
-        self._funct = funct
-
-class typeI(object):
-    def __init__(self, op, rs, rt, imm): 
-        self._op = op
-        self._rs = rs
-        self._rt = rt
-        self._imm = imm
-
-class typeJ(object):
-    def __init__(self, op, addr): 
-        self._op = op
-        self._addr = addr
-
-class instrucAddress(object):
-    def __init__(self, address, linha, label, typeIns): 
-        self._address = address
-        self._linha = linha
-        self._label = label
-        self._typeIns = typeIns
-
-class InstructionAddress(object):
-    address = [] 
-    def appendAdress(self, addressN, linha, label, typeIns):
-        self.address.append(instrucAddress(addressN, linha, label, typeIns))
-        pass
-
-    def labels(self, addressN):
-        for addr in self.address:
-            if addr._address == addressN and addr._label != "":
-                return True
-        return False    
-        pass
-    
-    def haveLabel(self, addr):
-        if addr._label != "":   return True
-        else: return False 
-        pass
-    def getAddress(self, address):
-        look = address
-        for element in self.address:
-            if look in element.addressN:
-                return element.addressN
-        pass
-        
-    def extractLabel(self, linha):
-        pos = linha.find(":")
-        if pos != -1:
-            return linha[0:pos]
-        else:
-            return ""
-        pass
-    
-    def extractLabel2(self, linha):
-        pos = linha.find(":")
-        if pos != -1:
-            return linha[pos+1:]
-        else:
-            return ""
-        pass
-        
-class instFull(object):
-    def __init__(self, mnem, address, instruc, tipo): 
-        self._mnem = mnem
-        self._address = address
-        self._instruc = instruc
-        self._tipo = tipo
-
-class InstructionFull(object):
-    instrucFull = [] 
-    def appendInstruc(self, mnem, address, instruction, typeIns):
-        self.instrucFull.append(instFull(mnem, address, instruction, typeIns))
-        pass
-
-    def printAll(self, instrucFull, instructionFile):
-        buffer = ""
-        for instr in instrucFull:
-            linha = ("| Address: " + instr._address + " | Mnem: " + format(instr._mnem, '4') + " | Tipo: " + instr._tipo + " | ")
-            if instr._tipo == 'i':
-                linha += ("Imm: " + instr._instruc._imm)
-                linha +=  (" | op: " + instr._instruc._op)
-                linha += (" | rs: " + instr._instruc._rs)
-                linha += (" | rt: " + instr._instruc._rt)
-            elif instr._tipo == 'j':
-                linha += ("Target:  " + instr._instruc._addr)
-                linha += (" | op: " + instr._instruc._op)
-            elif instr._tipo == 'r':
-                linha += ("funct: " + instr._instruc._funct)
-                linha += (" | op: " + instr._instruc._op)
-                linha += (" | rd: " + instr._instruc._rd)
-                linha += (" | rs: " + instr._instruc._rs)
-                linha += (" | shamt: " + instr._instruc._shamt)
-            buffer += linha + "\n"
-        buffer = buffer.rstrip('\n')
-        outputfile = open(instructionFile, "w")
-        outputfile.write(buffer)
-        outputfile.close()
-
-
-class Instruction(object):
-    instructions = [Instruc("nop", 'r', 0, 0), Instruc("add", 'r', 32,3), Instruc("addi", 'i', 8, 3),
-            Instruc("sub", 'r', 34, 3), Instruc("sll", 'r', 0, 3), Instruc("srl", 'r', 2, 3), Instruc("lui", 'i', 15, 2),
-            Instruc("and", 'r', 36, 3), Instruc("andi", 'i', 12, 3), Instruc("or", 'r', 21, 3), Instruc("ori", 'i', 13, 3),
-            Instruc("xor", 'r', 38, 3), Instruc("xori", 'i', 14, 3), Instruc("slt", 'r', 42, 3), Instruc("slti", 'i', 10, 3),
-            Instruc("beq", 'i', 4, 3), Instruc("bne", 'i', 5, 3), Instruc("mul", 'r', 24, 3), Instruc("div", 'r', 26, 3),
-            Instruc("j", 'j', 2, 1), Instruc("jal", 'j', 3, 1), Instruc("jr", 'r', 8, 1), Instruc("lw", 'i', 35, 2),
-            Instruc("sw", 'i', 43, 2)]
-    
-    def getOpcode(self, mnem):
-        look = mnem
-        for instr in self.instructions:
-            if look in instr._mnem:
-                return instr._opfunc
-        pass
-
-    def getObjectbyMnem(self, mnem):
-        look = mnem
-        for instr in self.instructions:
-            if look in instr._mnem:
-                return instr
-        pass
-
-    def getType(self, mnem):
-        look = mnem
-        for instr in self.instructions:
-            if look in instr._mnem:
-                return instr._tipo
-        pass
+        return instrVector
    
 if __name__ == "__main__":
     args = len(sys.argv)
@@ -472,13 +307,6 @@ if __name__ == "__main__":
     passo1 = Montador() 
     passo1.limp(str(sys.argv[1]), "ArquivoLimpoTemp.txt")
     passo2 = passo1.address("ArquivoLimpoTemp.txt")
-    #passo1.limp("/storage/emulated/0/Download/input.asm", "/storage/emulated/0/Download/output.mif")
-    #passo2 = passo1.address("/storage/emulated/0/Download/output.asm")
     instrucoes = passo1.attrbType(passo2 , targetFile)
     instrucoes.printAll(instrucoes.instrucFull, "instrucoes.txt")
     print("Arquivos Criados com Sucesso!")
-    '''
-    for addr in passo2.address:
-        if passo2.haveLabel(addr._address):
-            print(addr._label)
-    '''

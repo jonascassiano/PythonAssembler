@@ -23,6 +23,11 @@ Typing without output file name also works:
 ```
 In this case, a file named "Memoria.mif" will be created
 
+2 Aux files will be created. "ArquivoLimpoTemp.txt" and "instrucoes.txt"
+
+    -- ArquivoLimpoTemp.txt stores the clean assembly code (without the comments, \n and spaces)
+
+    -- instrucoes.txt stores a general info of all the instructions, such as memory address and immediate. 
 
 ## Authors
 

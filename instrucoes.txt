@@ -1,0 +1,83 @@
+| Address: 0X000 | Mnem: addi | Tipo: i | Imm: 0000000000001010 | op: 001000 | rs: 00000 | rt: 00100
+| Address: 0X004 | Mnem: addi | Tipo: i | Imm: 0000000000000011 | op: 001000 | rs: 00000 | rt: 00101
+| Address: 0X008 | Mnem: jal  | Tipo: j | Target:  00000000000000000000000001011000 | op: 000011
+| Address: 0X00C | Mnem: j    | Tipo: j | Target:  00000000000000000000000101001100 | op: 000010
+| Address: 0X010 | Mnem: addi | Tipo: i | Imm: 1111111111111000 | op: 001000 | rs: 11101 | rt: 11101
+| Address: 0X014 | Mnem: sw   | Tipo: i | Imm: 0000000000000100 | op: 101011 | rs: 11101 | rt: 01000
+| Address: 0X018 | Mnem: sw   | Tipo: i | Imm: 0000000000000000 | op: 101011 | rs: 11101 | rt: 00100
+| Address: 0X01C | Mnem: bne  | Tipo: i | Imm: 0000000000000010 | op: 000101 | rs: 00100 | rt: 00000
+| Address: 0X020 | Mnem: addi | Tipo: i | Imm: 0000000000000001 | op: 001000 | rs: 00000 | rt: 00010
+| Address: 0X024 | Mnem: j    | Tipo: j | Target:  00000000000000000000000001001000 | op: 000010
+| Address: 0X028 | Mnem: add  | Tipo: r | funct: 100000 | op: 000000 | rd: 01000 | rs: 00100 | shamt: 00000
+| Address: 0X02C | Mnem: addi | Tipo: i | Imm: 1111111111111111 | op: 001000 | rs: 00100 | rt: 00100
+| Address: 0X030 | Mnem: addi | Tipo: i | Imm: 1111111111111100 | op: 001000 | rs: 11101 | rt: 11101
+| Address: 0X034 | Mnem: sw   | Tipo: i | Imm: 0000000000000000 | op: 101011 | rs: 11101 | rt: 11111
+| Address: 0X038 | Mnem: jal  | Tipo: j | Target:  00000000000000000000000000010000 | op: 000011
+| Address: 0X03C | Mnem: lw   | Tipo: i | Imm: 0000000000000000 | op: 100011 | rs: 11111 | rt: 11101
+| Address: 0X040 | Mnem: addi | Tipo: i | Imm: 0000000000000100 | op: 001000 | rs: 11101 | rt: 11101
+| Address: 0X044 | Mnem: mul  | Tipo: r | funct: 011000 | op: 000000 | rd: 00010 | rs: 01000 | shamt: 00000
+| Address: 0X048 | Mnem: lw   | Tipo: i | Imm: 0000000000000000 | op: 100011 | rs: 00100 | rt: 11101
+| Address: 0X04C | Mnem: lw   | Tipo: i | Imm: 0000000000000100 | op: 100011 | rs: 01000 | rt: 11101
+| Address: 0X050 | Mnem: addi | Tipo: i | Imm: 0000000000001000 | op: 001000 | rs: 11101 | rt: 11101
+| Address: 0X054 | Mnem: jr   | Tipo: r | funct: 001000 | op: 000000 | rd: 00000 | rs: 11111 | shamt: 00000
+| Address: 0X058 | Mnem: addi | Tipo: i | Imm: 1111111111100100 | op: 001000 | rs: 11101 | rt: 11101
+| Address: 0X05C | Mnem: sw   | Tipo: i | Imm: 0000000000000000 | op: 101011 | rs: 11101 | rt: 00100
+| Address: 0X060 | Mnem: sw   | Tipo: i | Imm: 0000000000000100 | op: 101011 | rs: 11101 | rt: 00101
+| Address: 0X064 | Mnem: sw   | Tipo: i | Imm: 0000000000001000 | op: 101011 | rs: 11101 | rt: 01000
+| Address: 0X068 | Mnem: sw   | Tipo: i | Imm: 0000000000001100 | op: 101011 | rs: 11101 | rt: 01001
+| Address: 0X06C | Mnem: sw   | Tipo: i | Imm: 0000000000010000 | op: 101011 | rs: 11101 | rt: 01010
+| Address: 0X070 | Mnem: sw   | Tipo: i | Imm: 0000000000010100 | op: 101011 | rs: 11101 | rt: 01011
+| Address: 0X074 | Mnem: sw   | Tipo: i | Imm: 0000000000011000 | op: 101011 | rs: 11101 | rt: 01100
+| Address: 0X078 | Mnem: slt  | Tipo: r | funct: 101010 | op: 000000 | rd: 01000 | rs: 00100 | shamt: 00000
+| Address: 0X07C | Mnem: beq  | Tipo: i | Imm: 0000000000000011 | op: 000100 | rs: 01000 | rt: 00000
+| Address: 0X080 | Mnem: beq  | Tipo: i | Imm: 0000000000000010 | op: 000100 | rs: 00100 | rt: 00101
+| Address: 0X084 | Mnem: addi | Tipo: i | Imm: 0000000000000001 | op: 001000 | rs: 00000 | rt: 00011
+| Address: 0X088 | Mnem: j    | Tipo: j | Target:  00000000000000000000000100101000 | op: 000010
+| Address: 0X08C | Mnem: slt  | Tipo: r | funct: 101010 | op: 000000 | rd: 01000 | rs: 00100 | shamt: 00000
+| Address: 0X090 | Mnem: beq  | Tipo: i | Imm: 0000000000000010 | op: 000100 | rs: 01000 | rt: 00000
+| Address: 0X094 | Mnem: addi | Tipo: i | Imm: 0000000000000010 | op: 001000 | rs: 00000 | rt: 00011
+| Address: 0X098 | Mnem: j    | Tipo: j | Target:  00000000000000000000000100101000 | op: 000010
+| Address: 0X09C | Mnem: slt  | Tipo: r | funct: 101010 | op: 000000 | rd: 01000 | rs: 00101 | shamt: 00000
+| Address: 0X0A0 | Mnem: beq  | Tipo: i | Imm: 0000000000000010 | op: 000100 | rs: 01000 | rt: 00000
+| Address: 0X0A4 | Mnem: addi | Tipo: i | Imm: 0000000000000010 | op: 001000 | rs: 00000 | rt: 00011
+| Address: 0X0A8 | Mnem: j    | Tipo: j | Target:  00000000000000000000000100101000 | op: 000010
+| Address: 0X0AC | Mnem: bne  | Tipo: i | Imm: 0000000000000010 | op: 000101 | rs: 00100 | rt: 00101
+| Address: 0X0B0 | Mnem: addi | Tipo: i | Imm: 0000000000000011 | op: 001000 | rs: 00000 | rt: 00011
+| Address: 0X0B4 | Mnem: j    | Tipo: j | Target:  00000000000000000000000100101000 | op: 000010
+| Address: 0X0B8 | Mnem: beq  | Tipo: i | Imm: 0000000000000001 | op: 000100 | rs: 00100 | rt: 00000
+| Address: 0X0BC | Mnem: bne  | Tipo: i | Imm: 0000000000000010 | op: 000101 | rs: 00101 | rt: 00000
+| Address: 0X0C0 | Mnem: addi | Tipo: i | Imm: 0000000000000100 | op: 001000 | rs: 00000 | rt: 00011
+| Address: 0X0C4 | Mnem: j    | Tipo: j | Target:  00000000000000000000000100101000 | op: 000010
+| Address: 0X0C8 | Mnem: add  | Tipo: r | funct: 100000 | op: 000000 | rd: 01000 | rs: 00000 | shamt: 00000
+| Address: 0X0CC | Mnem: add  | Tipo: r | funct: 100000 | op: 000000 | rd: 01001 | rs: 00000 | shamt: 00000
+| Address: 0X0D0 | Mnem: addi | Tipo: i | Imm: 1111111111111100 | op: 001000 | rs: 11101 | rt: 11101
+| Address: 0X0D4 | Mnem: sw   | Tipo: i | Imm: 0000000000000000 | op: 101011 | rs: 11101 | rt: 11111
+| Address: 0X0D8 | Mnem: jal  | Tipo: j | Target:  00000000000000000000000000010000 | op: 000011
+| Address: 0X0DC | Mnem: lw   | Tipo: i | Imm: 0000000000000000 | op: 100011 | rs: 11111 | rt: 11101
+| Address: 0X0E0 | Mnem: addi | Tipo: i | Imm: 0000000000000100 | op: 001000 | rs: 11101 | rt: 11101
+| Address: 0X0E4 | Mnem: add  | Tipo: r | funct: 100000 | op: 000000 | rd: 01010 | rs: 00000 | shamt: 00000
+| Address: 0X0E8 | Mnem: add  | Tipo: r | funct: 100000 | op: 000000 | rd: 00100 | rs: 00000 | shamt: 00000
+| Address: 0X0EC | Mnem: addi | Tipo: i | Imm: 1111111111111100 | op: 001000 | rs: 11101 | rt: 11101
+| Address: 0X0F0 | Mnem: sw   | Tipo: i | Imm: 0000000000000000 | op: 101011 | rs: 11101 | rt: 11111
+| Address: 0X0F4 | Mnem: jal  | Tipo: j | Target:  00000000000000000000000000010000 | op: 000011
+| Address: 0X0F8 | Mnem: lw   | Tipo: i | Imm: 0000000000000000 | op: 100011 | rs: 11111 | rt: 11101
+| Address: 0X0FC | Mnem: addi | Tipo: i | Imm: 0000000000000100 | op: 001000 | rs: 11101 | rt: 11101
+| Address: 0X100 | Mnem: add  | Tipo: r | funct: 100000 | op: 000000 | rd: 01011 | rs: 00000 | shamt: 00000
+| Address: 0X104 | Mnem: sub  | Tipo: r | funct: 100010 | op: 000000 | rd: 00100 | rs: 01000 | shamt: 00000
+| Address: 0X108 | Mnem: addi | Tipo: i | Imm: 1111111111111100 | op: 001000 | rs: 11101 | rt: 11101
+| Address: 0X10C | Mnem: sw   | Tipo: i | Imm: 0000000000000000 | op: 101011 | rs: 11101 | rt: 11111
+| Address: 0X110 | Mnem: jal  | Tipo: j | Target:  00000000000000000000000000010000 | op: 000011
+| Address: 0X114 | Mnem: lw   | Tipo: i | Imm: 0000000000000000 | op: 100011 | rs: 11111 | rt: 11101
+| Address: 0X118 | Mnem: addi | Tipo: i | Imm: 0000000000000100 | op: 001000 | rs: 11101 | rt: 11101
+| Address: 0X11C | Mnem: mul  | Tipo: r | funct: 011000 | op: 000000 | rd: 01100 | rs: 01011 | shamt: 00000
+| Address: 0X120 | Mnem: addi | Tipo: i | Imm: 0000000000000001 | op: 001000 | rs: 01010 | rt: 01010
+| Address: 0X124 | Mnem: div  | Tipo: r | funct: 011010 | op: 000000 | rd: 00010 | rs: 01010 | shamt: 00000
+| Address: 0X128 | Mnem: lw   | Tipo: i | Imm: 0000000000000000 | op: 100011 | rs: 00100 | rt: 11101
+| Address: 0X12C | Mnem: lw   | Tipo: i | Imm: 0000000000000100 | op: 100011 | rs: 00101 | rt: 11101
+| Address: 0X130 | Mnem: lw   | Tipo: i | Imm: 0000000000001000 | op: 100011 | rs: 01000 | rt: 11101
+| Address: 0X134 | Mnem: lw   | Tipo: i | Imm: 0000000000001100 | op: 100011 | rs: 01001 | rt: 11101
+| Address: 0X138 | Mnem: lw   | Tipo: i | Imm: 0000000000010000 | op: 100011 | rs: 01010 | rt: 11101
+| Address: 0X13C | Mnem: lw   | Tipo: i | Imm: 0000000000010100 | op: 100011 | rs: 01011 | rt: 11101
+| Address: 0X140 | Mnem: lw   | Tipo: i | Imm: 0000000000011000 | op: 100011 | rs: 01100 | rt: 11101
+| Address: 0X144 | Mnem: addi | Tipo: i | Imm: 0000000000011100 | op: 001000 | rs: 11101 | rt: 11101
+| Address: 0X148 | Mnem: jr   | Tipo: r | funct: 001000 | op: 000000 | rd: 00000 | rs: 11111 | shamt: 00000
