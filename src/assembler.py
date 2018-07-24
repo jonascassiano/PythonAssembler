@@ -6,15 +6,21 @@ import sys
 import os.path
 import operator
 
-from files.instructionType import *
+from files.instructionType import *  #Importa os outros arquivos
 from files.instructionMount import *
 from files.regs import *
 from files.mnems import *
 
 class Montador(object):
+"""
+Classe que vai fazer as etapas de conversão
+"""
     finalFile = ""
     instrucFull = []
-    def lastLinha(self, nomeArquivo):
+    def lastLinha(self, nomeArquivo)
+    """
+    Retorna a ultima linha do arquivo
+    """
         file = open(nomeArquivo, "r")
         lineList = file.readlines()
         finalFile = lineList[-1]
@@ -23,6 +29,9 @@ class Montador(object):
         pass
 
     def limp(self, nomeArquivo, targetFile):
+    """
+    Limpa o arquivo de entrada
+    """
         buffer = ""  #var q armazena as linhas limpas
         quebraLinha = ""
         global finalFile
@@ -40,7 +49,7 @@ class Montador(object):
                         codigoExiste = False
                     else:
                         linha = tmp
-
+                        
                 tmp = linha.strip(" ")
                 tmp = tmp.strip("\t")         
                 tmp = tmp.strip("\n")
@@ -75,6 +84,9 @@ class Montador(object):
         pass    
 
     def address(self, nomeArquivo):
+    """
+    Atribui endereco de memoria para cada instrucao
+    """
         contLinhas = 0
         if os.path.exists(nomeArquivo):
             file = open(nomeArquivo, "r")
@@ -90,6 +102,9 @@ class Montador(object):
         pass
 
     def operacaoR(self, mnemObj, linhaVector):
+    """
+    monta e retorna as instrucoes do tipo R (op,rs,rt,rd e etc)
+    """
         regBank = Regs()
         op, rs, rt, rd, shamt, funct = 0,0,0,0,0,0
         if mnemObj._mnem == "sll" or  mnemObj._mnem == "srl": #
@@ -115,6 +130,9 @@ class Montador(object):
         pass
 
     def operacaoI(self, currentAddr,mnemObj, linhaVector):
+    """
+    monta e retorna as instrucoes do tipo I (op,rs,rt,imm)
+    """
         regBank = Regs()
         op, rs, rt, imm = 0,0,0,0
         if mnemObj._mnem == "sw": 
@@ -167,6 +185,9 @@ class Montador(object):
         pass
     
     def offsetCalc(self,addrS,addrD):
+    """
+    Calcula o offset do bne e beq
+    """
         op1 = int(addrS, 16) + 0x4
         op2 = int(addrD, 16) - op1
         op3 = int(op2/4)
@@ -175,10 +196,16 @@ class Montador(object):
 
 
     def bindigits(self, n, bits):
+    """
+    Faz complemento de 2
+    """
         s = bin(n & int("1"*bits, 2))[2:]
         return ("{0:0>%s}" % (bits)).format(s)
 
     def operacaoJ(self, mnemObj, linhaVector):
+    """
+    monta e retorna as instrucoes do tipo J (op,addr)
+    """
         regBank = Regs()
         op, addr = 0,0
         op = mnemObj._opfunc        
@@ -189,6 +216,9 @@ class Montador(object):
         pass
          
     def attrbType(self, instrVec, targetFile):
+    """
+    Passa as instrucoes para seus respectivos enderecos de memoria
+    """
         mnemVector = Instruction()
         instrVector = InstructionFull()
         buffer = ""
@@ -220,18 +250,13 @@ class Montador(object):
                 rd =instrucao._rd
                 shamt = instrucao._shamt
                 funct = instrucao._funct
-                #print(mnemObj._mnem)
                 instr0 = shamt[3:] + funct
-                #print(instr0)
                 instr0Hex = (format(int(instr0,2), '#04X'))
                 instr1 = rd + shamt[0:3]
-                #print (instr1)
                 instr1Hex = (format(int(instr1,2), '#04X'))
                 instr2 = rs[2:] + rt
-                #print(instr2)
                 instr2Hex = (format(int(instr2,2), '#04X'))
                 instr3 = op + rs[0:2]
-                #print(instr3)
                 instr3Hex = (format(int(instr3,2), '#04X'))
                
             elif mnemObj._tipo == 'i':
@@ -241,18 +266,13 @@ class Montador(object):
                 rs = instrucao._rs
                 imm = instrucao._imm
                 rt = instrucao._rt
-                #print(mnemObj._mnem)
                 instr0 = imm[8:]
-                #print(instr0)
                 instr0Hex = (format(int(instr0,2), '#04X'))
                 instr1 = imm[0:8] 
-                #print(instr1)
                 instr1Hex = (format(int(instr1,2), '#04X'))
                 instr2 = rs[2:5] + rt
-                #print(instr2)
                 instr2Hex = (format(int(instr2,2), '#04X'))
                 instr3 = op + rs[0:2]
-                #print(instr3)
                 instr3Hex = (format(int(instr3,2), '#04X'))
                 
             elif mnemObj._tipo == 'j':
@@ -261,19 +281,14 @@ class Montador(object):
                 cropAddr = instrucao._addr[4:30]
                 op = instrucao._op
                 instr0 = cropAddr[18:26] 
-                #print(mnemObj._mnem)
-                #print(instr0)
                 instr0Hex = (format(int(instr0,2), '#04X'))
                 instr1 = cropAddr[10:18]
-                #print(instr1) 
                 instr1Hex = (format(int(instr1,2), '#04X'))
                 instr2 = cropAddr[2:10]
-                #print(instr2) 
                 instr2Hex = (format(int(instr2,2), '#04X'))
                 instr3 = op + cropAddr[0:2]
-                #print(instr3) 
                 instr3Hex = (format(int(instr3,2), '#04X'))
-            #aqu
+            
             addr0 = int(addr._address 	, 16 )
             addr1 = addr0 + 1
             addr2 = addr0 + 2
