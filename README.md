@@ -29,7 +29,7 @@ Typing without output file name also works:
 ```
 In this case, a file named "Memoria.mif" will be created
 
-2 Aux files will be created. "ArquivoLimpoTemp.txt" and "instrucoes.txt"
+2 more files will be generated automatically. "ArquivoLimpoTemp.txt" and "instrucoes.txt"
 
     -- ArquivoLimpoTemp.txt stores the clean assembly code (without the comments, \n and spaces)
 
