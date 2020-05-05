@@ -12,15 +12,9 @@ from files.regs import *
 from files.mnems import *
 
 class Montador(object):
-"""
-Classe que vai fazer as etapas de conversão
-"""
     finalFile = ""
     instrucFull = []
-    def lastLinha(self, nomeArquivo)
-    """
-    Retorna a ultima linha do arquivo
-    """
+    def lastLinha(self, nomeArquivo):
         file = open(nomeArquivo, "r")
         lineList = file.readlines()
         finalFile = lineList[-1]
@@ -29,9 +23,6 @@ Classe que vai fazer as etapas de conversão
         pass
 
     def limp(self, nomeArquivo, targetFile):
-    """
-    Limpa o arquivo de entrada
-    """
         buffer = ""  #var q armazena as linhas limpas
         quebraLinha = ""
         global finalFile
@@ -84,9 +75,6 @@ Classe que vai fazer as etapas de conversão
         pass    
 
     def address(self, nomeArquivo):
-    """
-    Atribui endereco de memoria para cada instrucao
-    """
         contLinhas = 0
         if os.path.exists(nomeArquivo):
             file = open(nomeArquivo, "r")
@@ -102,9 +90,6 @@ Classe que vai fazer as etapas de conversão
         pass
 
     def operacaoR(self, mnemObj, linhaVector):
-    """
-    monta e retorna as instrucoes do tipo R (op,rs,rt,rd e etc)
-    """
         regBank = Regs()
         op, rs, rt, rd, shamt, funct = 0,0,0,0,0,0
         if mnemObj._mnem == "sll" or  mnemObj._mnem == "srl": #
@@ -130,9 +115,6 @@ Classe que vai fazer as etapas de conversão
         pass
 
     def operacaoI(self, currentAddr,mnemObj, linhaVector):
-    """
-    monta e retorna as instrucoes do tipo I (op,rs,rt,imm)
-    """
         regBank = Regs()
         op, rs, rt, imm = 0,0,0,0
         if mnemObj._mnem == "sw": 
@@ -185,9 +167,6 @@ Classe que vai fazer as etapas de conversão
         pass
     
     def offsetCalc(self,addrS,addrD):
-    """
-    Calcula o offset do bne e beq
-    """
         op1 = int(addrS, 16) + 0x4
         op2 = int(addrD, 16) - op1
         op3 = int(op2/4)
@@ -196,16 +175,10 @@ Classe que vai fazer as etapas de conversão
 
 
     def bindigits(self, n, bits):
-    """
-    Faz complemento de 2
-    """
         s = bin(n & int("1"*bits, 2))[2:]
         return ("{0:0>%s}" % (bits)).format(s)
 
     def operacaoJ(self, mnemObj, linhaVector):
-    """
-    monta e retorna as instrucoes do tipo J (op,addr)
-    """
         regBank = Regs()
         op, addr = 0,0
         op = mnemObj._opfunc        
@@ -216,9 +189,6 @@ Classe que vai fazer as etapas de conversão
         pass
          
     def attrbType(self, instrVec, targetFile):
-    """
-    Passa as instrucoes para seus respectivos enderecos de memoria
-    """
         mnemVector = Instruction()
         instrVector = InstructionFull()
         buffer = ""
